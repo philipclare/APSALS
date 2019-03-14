@@ -1,6 +1,7 @@
-# Parental Supply of Alcohol LTMLE Application Code
+# The joint effect of parental supply of alcohol across adolescence on alcohol-related harms in early adulthood
+## R Analysis Code
 
-This repository contains R code used in the TMLE analysis of APSALS by Clare et al.
+This repository contains R code used in the TMLE analysis of parental supply of alcohol on harms in the APSALS dataset by Clare et al. 2019
 
 | Description | R-code |
 | --- | --- |
