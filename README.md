@@ -6,7 +6,7 @@ This repository contains R code used in a number of articles using the Australia
 ## The overall effect of parental supply of alcohol across adolescence on alcohol-related harms in early adulthood—a prospective cohort study
 Code for all analysis in the article by Clare et al published in Addiction, 2020: https://doi.org/10.1111/add.15005
 
-| Description | R-code |
+| Description | R Code |
 | --- | --- |
 | A1 - Multiple imputation | [Multiple imputation](Code/2020a/A1_multiple_imputation.R) |
 | A2 - Final data creation | [Final data creation](Code/2020a/A2_final_data_creation.R) |
@@ -23,7 +23,7 @@ Code for all analysis in the article by Clare et al published in Addiction, 2020
 ## Alcohol use among young Australian adults during the COVID-19 pandemic: a prospective cohort study 
 R and Stata code for all analysis of APSALS COVID-19 alcohol data (in progress).
 
-| Description | R-code |
+| Description | R/Stata Code |
 | --- | --- |
 | S1 - Multiple imputation using UNSW HPC 'Katana' | [Multiple imputation](Code/2020b/S1_multiple_imputation.R) |
 | S2 - Final data creation | [Final data creation](Code/2020b/S2_data_finalise_after_imputation.R) |
