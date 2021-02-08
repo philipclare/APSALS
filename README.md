@@ -30,7 +30,6 @@ R and Stata code for all analysis of APSALS COVID-19 alcohol data (in progress).
 | S3 - Import MI data into Stata for analysis | [Stata import](Code/2020b/S3_import_data_into_stata.do) |
 | S4 - Cross-sectional descriptives in R | [Cross-sectional descriptives](Code/2020b/S3_import_data_into_stata.do) |
 | S5 - Longitudinal descriptives in Stata | [Longitudinal descriptives](Code/2020b/S5_longitudinal_descriptives.do) |
-
 | S6 - Primary analyses using mixed effects models with discrete time | [Primary analyis](Code/2020b/S6_primary_analysis) |
 | S7 - Sensitivity analysis using continuous time and 'high risk' consumption variable | [Sensitivity analysis](Code/2020b/S7_sensitivity_analysis) |
 
