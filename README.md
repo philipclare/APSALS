@@ -1,4 +1,4 @@
-# The overall effect of parental supply of alcohol across adolescence on alcohol-related harms in early adulthood – a prospective cohort study
+# The Australian Parental Supply of Alcohol Longitudinal Study (APSALS) Code
 
 This repository contains R code used in a number of articles using the Australian Parental Supply of Alcohol Longitudinal Study (APSALS).
 
