@@ -8,8 +8,8 @@
 *-----------------------------------------------------------------------------
 * 1.0 Load MICE imputed data exported from R
 
-cd "C:\Users\pjclare\UNSW\APSALS - Documents\Papers\PIP39. COVID-19 Alcohol Paper\Data"
-use "C:\Users\pjclare\UNSW\APSALS - Documents\Papers\PIP39. COVID-19 Alcohol Paper\Data\Alcohol imputed data - long.dta", clear
+cd "/Users/pjclare/UNSW/APSALS - Documents/Papers/PIP39. COVID-19 Alcohol Paper/Data"
+use "/Users/pjclare/UNSW/APSALS - Documents/Papers/PIP39. COVID-19 Alcohol Paper/Data/Alcohol imputed data - long.dta", clear
 
 decode zzC_ID, gen(cid)
 destring cid, replace
@@ -18,7 +18,11 @@ rename cid zzC_ID
 
 replace imp=0 if imp==51
 
-merge m:1 zzC_ID using "C:\Users\pjclare\UNSW\APSALS - Documents\Papers\PIP39. COVID-19 Alcohol Paper\Data\COVID Survey States.dta", keepusing(state) keep(match master)
+merge m:1 zzC_ID using "/Users/pjclare/UNSW/APSALS - Documents/Papers/PIP39. COVID-19 Alcohol Paper/Data/COVID Survey States.dta", keepusing(state) keep(match master)
+
+replace ccalcfre=0 if ccalcqnt==0 & ccalcfre!=0
+replace ccalcqnt=0 if ccalcfre==0 & ccalcqnt!=0
+replace ccalcqnt=.1 if ccalcqnt>0 & ccalcqnt<1
 
 gen alcfqqnt=ccalcfre*ccalcqnt
 gen alcgrp=.
@@ -36,13 +40,13 @@ replace highrisk=1 if cchvyalc==1 | ccalcbng>=2.5 & zzwave==1
 
 egen cid = group(imp zzC_ID)
 xtset cid zzwave
-forvalues i=2/4 {
+forvalues i=2/5 {
 	replace alcgrp = l1.alcgrp if zzwave==`i'
 	replace highrisk = l1.highrisk if zzwave==`i'
 }
 
-gen sample=1 if sex_9!=3
-replace sample=0 if datecom>td(1feb2020) & zzwave==2
+gen sample=1 if sex_8!=3. & sex_9!=3
+replace sample=0 if datecom>td(1feb2020) & zzwave==3
 
 replace ccalcmon=ccalcmon-1
 label define ccalcmon 0 "No" 1 "Yes", replace
@@ -68,12 +72,9 @@ gen lccmethfrq=l1.ccmethfrq
 
 drop cid
 
-replace ccalcqnt=.1 if ccalcqnt>0 & ccalcqnt<1
-replace ccalcqnt=0 if ccalcfre==0
-
 * 1.1 Set data as MI data using mi import
-	mi import flong, m(imp) id(zzC_ID zzwave) imp(b_seifa b_famhist b_oldsib sex_9 pinc_9 ///
-	age_9 peeruse_9 peerdis_9 datecom ccstndt ccempl ccalcfre ccalcqnt ccalcbngf ccalcmax ///
+	mi import flong, m(imp) id(zzC_ID zzwave) imp(b_seifa b_famhist b_oldsib sex_8 pinc_8 ///
+	age_8 peeruse_8 peerdis_8 datecom ccstndt ccempl ccalcfre ccalcqnt ccalcbngf ccalcmax ///
 	ccalcalone ccalcothers ccalcvirtual ccalcdlvr ccalcmon ccsmkfrq ccecigfrq cccanfrq ///
 	ccecstfrq ccmethfrq highrisk) passive(alcfqqnt sample lccalcmax lccalcdlvr lccalcalone lccalcothers ///
 	lccalcvirtual lccecstfrq lccmethfrq cchvyalc) clear
@@ -97,4 +98,4 @@ mi passive: gen qtryr=qofd(datecom)
 format qtryr %tq
 
 * 1.2 Save newly created data for analysis
-save "C:\Users\pjclare\Desktop\APSALS\COVID Survey\Data\Alcohol imputed data - for analysis.dta", replace
+save "/Users/pjclare/UNSW/APSALS - Documents/Papers/PIP39. COVID-19 Alcohol Paper/Data/Alcohol imputed data - for analysis.dta", replace
